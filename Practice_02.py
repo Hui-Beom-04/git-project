@@ -9,8 +9,8 @@ def allocate_subject_id(subject_id_map, subject_name):
     
     else:
         return subject_id_map, subject_id_map[subject_name]
-    
-    
+
+
 def get_gpa_score(gpa):
     match gpa:
         case 'A+':
@@ -38,7 +38,6 @@ def input_process(subject_id_map):
     subject_id_map, subject_id = allocate_subject_id(subject_id_map, subject_name)
     
     credit = input('학점을 입력하세요: ')
-    
     gpa = input('평점을 입력하세요: ')
         
     return (subject_id, int(credit), gpa)
@@ -53,6 +52,7 @@ subject_id_map = {'id': 10000}
 taken_subject_list = []
 submit_grade = {}
 archive_grade = {}
+
 
 while True:
     print('작업을 선택하세요')
@@ -91,17 +91,21 @@ while True:
     elif user_input == '3':
         submit_gpa, archive_gpa = 0.0, 0.0
         submit_credit, archive_credit = 0, 0
+
         for subject_id in submit_grade:
             submit_gpa += submit_grade[subject_id][0] * submit_grade[subject_id][1]
             submit_credit += submit_grade[subject_id][0]
+
         for subject_id in archive_grade:
             archive_gpa += archive_grade[subject_id][0] * archive_grade[subject_id][1]
             archive_credit += archive_grade[subject_id][0]
+
         submit_gpa /= submit_credit
         archive_gpa /= archive_credit
         calculation_process(submit_credit, archive_credit, submit_gpa, archive_gpa)
         break
-        
+
+
     else:
         continue
         
