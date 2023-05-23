@@ -117,8 +117,12 @@ while True:
     user_input = input()
     
     if user_input == '1':
-        course_history.input_process()
-        
+        try:
+            course_history.input_process()
+        except Exception as exception:
+            print('잘못된 입력입니다.')
+            print('[' + type(exception).__name__ + ']' + str(exception))
+
     elif user_input == '2':
         course_history.print_process()
 
